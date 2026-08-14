@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moodline — read the emotion in your words</title>
+<meta name="description" content="Type a sentence and watch a BiGRU model read the emotion inside it.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" id="statusDot" title="checking server..."></span>
+      <span class="brand-name">Moodline</span>
+    </div>
+    <p class="brand-tag">an instrument that reads the mood inside a sentence</p>
+  </header>
+
+  <main>
+
+    <section class="console" id="console">
+
+      <div class="orb-stage">
+        <div class="orb-glow" id="orbGlow"></div>
+        <div class="orb" id="orb">
+          <span class="orb-emoji" id="orbEmoji">✎</span>
+        </div>
+      </div>
+
+      <div class="input-panel">
+        <span class="eyebrow">INPUT</span>
+        <textarea
+          id="textInput"
+          maxlength="2000"
+          placeholder="Write a sentence and let it speak for itself&#10;— e.g. “I can't believe we actually pulled this off.”"
+        ></textarea>
+
+        <div class="input-footer">
+          <span class="char-count"><span id="charCount">0</span> / 2000</span>
+          <button id="analyzeBtn" class="btn-primary" disabled>
+            <span class="btn-label">Read the mood</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+
+        <p class="error-msg" id="errorMsg" hidden></p>
+      </div>
+
+    </section>
+
+    <section class="result" id="resultSection" hidden>
+
+      <div class="reveal">
+        <span class="eyebrow">DETECTED</span>
+        <div class="reveal-main">
+          <span class="reveal-emoji" id="emotionEmoji">😄</span>
+          <h1 id="emotionWord">Joy</h1>
+        </div>
+        <span class="confidence-mono" id="confidenceText">92.4% confidence</span>
+        <blockquote class="echoed-text" id="echoedText"></blockquote>
+      </div>
+
+      <div class="breakdown">
+        <span class="eyebrow">BREAKDOWN</span>
+        <div class="bars" id="barsContainer"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footbar">
+    <span id="serverStatusText">connecting to model…</span>
+    <span class="footbar-hint">⌘ / Ctrl + Enter to analyze</span>
+  </footer>
+
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
